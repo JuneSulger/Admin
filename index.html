@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>June Sultan-Gerej — Assistante Administrative & Support Opérationnel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #FBF6EF;
+    --bg2:      #FFFFFF;
+    --bg3:      #F3E9DC;
+    --border:   #E4D6C3;
+    --violet:   #8B6FB0;
+    --violet-dim: rgba(139,111,176,0.09);
+    --coral:    #E1825A;
+    --coral-dim: rgba(225,130,90,0.10);
+    --grad:     linear-gradient(120deg, #8B6FB0, #E1825A);
+    --text:     #2C2620;
+    --muted:    #857664;
+    --serif:    'DM Serif Display', serif;
+    --sans:     'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    background-image:
+      radial-gradient(ellipse 900px 500px at 85% -5%, rgba(139,111,176,0.10), transparent),
+      radial-gradient(ellipse 700px 500px at -5% 40%, rgba(225,130,90,0.08), transparent);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(251,246,239,0.86);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2.5rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--text);
+  }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 13.5px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--violet); }
+  .nav-cv {
+    background: var(--grad);
+    color: #fff !important;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 13px;
+    box-shadow: 0 4px 14px rgba(139,111,176,0.28);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .nav-cv:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(139,111,176,0.4); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    padding: 7rem 2.5rem 4rem;
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+  .hero-content { max-width: 660px; }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 16px;
+    font-size: 12.5px;
+    color: var(--text);
+    margin-bottom: 1.75rem;
+  }
+  .status-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #5cb87a;
+    box-shadow: 0 0 6px rgba(92,184,122,0.6);
+    animation: breathe 3s ease-in-out infinite;
+  }
+  @keyframes breathe {
+    0%, 100% { opacity: 0.9; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+
+  .hero-kicker {
+    font-size: 13px;
+    color: var(--violet);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.9rem;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.6rem, 5.6vw, 4rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.7rem;
+    color: var(--text);
+  }
+
+  .hero-role {
+    font-size: 1.05rem;
+    color: var(--muted);
+    margin-bottom: 1.75rem;
+    min-height: 1.6em;
+  }
+  .hero-role span { color: var(--coral); font-weight: 500; }
+  .cursor {
+    display: inline-block;
+    width: 2px; height: 0.95em;
+    background: var(--coral);
+    vertical-align: middle;
+    margin-left: 2px;
+    animation: blink 1.2s step-end infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .hero-desc {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 540px;
+    margin-bottom: 2.25rem;
+    line-height: 1.85;
+    font-weight: 300;
+  }
+
+  .hero-actions { display: flex; gap: 0.85rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 24px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.22s;
+    text-decoration: none;
+    border: none;
+    font-family: var(--sans);
+  }
+  .btn-primary {
+    background: var(--grad);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(139,111,176,0.28);
+  }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(139,111,176,0.4); }
+  .btn-ghost {
+    background: var(--bg2);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { border-color: var(--violet); color: var(--violet); }
+
+  /* KPI strip */
+  .kpi-strip {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--border);
+  }
+  .kpi-item .kpi-num {
+    font-family: var(--serif);
+    font-size: 1.7rem;
+    color: var(--text);
+  }
+  .kpi-item .kpi-label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* Flower motif top right */
+  .hero-motif { position: absolute; top: 6rem; right: 3rem; opacity: 0.9; }
+  @media (max-width: 900px) { .hero-motif { display: none; } }
+
+  /* SECTIONS */
+  section {
+    position: relative;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 4.5rem 2.5rem;
+  }
+  .tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px 8px 0 0;
+    border-bottom: none;
+    padding: 7px 16px 9px;
+    font-size: 12.5px;
+    color: var(--violet);
+    font-weight: 500;
+    position: relative;
+    top: 1px;
+  }
+  .tab-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--coral); }
+  .section-panel {
+    border: 1px solid var(--border);
+    border-radius: 0 12px 12px 12px;
+    background: var(--bg2);
+    padding: 2.5rem;
+  }
+  @media (max-width: 640px) { .section-panel { padding: 1.75rem; } }
+  .section-heading {
+    font-family: var(--serif);
+    font-size: 1.7rem;
+    font-weight: 400;
+    margin-bottom: 1.75rem;
+    color: var(--text);
+  }
+
+  /* ABOUT */
+  .about-layout { display: grid; grid-template-columns: 1.3fr 1fr; gap: 2.5rem; }
+  @media (max-width: 700px) { .about-layout { grid-template-columns: 1fr; } }
+  .about-text { color: var(--muted); font-size: 1rem; line-height: 1.9; font-weight: 300; }
+  .info-stack { display: flex; flex-direction: column; gap: 1rem; }
+  .info-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.1rem 1.3rem;
+  }
+  .info-card-label {
+    font-size: 10.5px;
+    color: var(--coral);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .info-card-value { font-size: 14px; color: var(--text); line-height: 1.5; }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
+  .skill-cat {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+  .skill-cat h3 {
+    font-size: 13.5px;
+    font-weight: 600;
+    margin-bottom: 0.9rem;
+    color: var(--text);
+  }
+  .skill-cat h3::before { content: '— '; color: var(--coral); }
+  .tags { display: flex; flex-direction: column; gap: 7px; }
+  .tags span { font-size: 13px; color: var(--muted); }
+  .tags span::before { content: '·  '; color: var(--violet); font-weight: 700; }
+
+  .qualities-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .quality-pill {
+    background: var(--violet-dim);
+    border: 1px solid rgba(139,111,176,0.25);
+    border-radius: 50px;
+    padding: 7px 18px;
+    font-size: 13px;
+    color: var(--violet);
+  }
+
+  /* FORMATIONS */
+  .formations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 1.25rem; }
+  .formation-card { border-left: 2px solid var(--coral); padding-left: 1rem; }
+  .formation-date { font-size: 11.5px; color: var(--coral); font-weight: 600; margin-bottom: 4px; }
+  .formation-title { font-size: 14.5px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
+  .formation-place { font-size: 13px; color: var(--muted); font-style: italic; }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 1.5rem; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--violet), var(--coral));
+    opacity: 0.4;
+  }
+  .tl-item { position: relative; margin-bottom: 2.5rem; padding-left: 1.25rem; }
+  .tl-item:last-child { margin-bottom: 0; }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -1.56rem; top: 7px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--grad);
+  }
+  .tl-date { font-size: 11.5px; color: var(--coral); font-weight: 600; margin-bottom: 4px; letter-spacing: 0.03em; }
+  .tl-role { font-size: 15.5px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+  .tl-company { font-size: 12.5px; color: var(--violet); font-style: italic; margin-bottom: 0.7rem; }
+  .tl-list { list-style: none; }
+  .tl-list li { font-size: 13.5px; color: var(--muted); line-height: 1.85; padding-left: 1rem; position: relative; }
+  .tl-list li::before { content: '·'; position: absolute; left: 0; color: var(--coral); font-weight: 700; }
+
+  /* INTERESTS */
+  .interests-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.25rem; }
+  .interest-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; padding: 1.4rem; }
+  .interest-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 0.4rem; color: var(--text); }
+  .interest-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
+  .contact-item {
+    display: flex; align-items: center; gap: 1rem;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.1rem 1.3rem;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .contact-item:hover { border-color: var(--violet); }
+  .contact-icon {
+    width: 38px; height: 38px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--grad);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .contact-label { font-size: 11px; color: var(--muted); margin-bottom: 2px; }
+  .contact-value { font-size: 13.5px; color: var(--text); }
+
+  /* FOOTER */
+  footer {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .footer-text { font-size: 12px; color: var(--muted); }
+
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 600px) { .nav-links a:not(.nav-cv) { display: none; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <svg width="30" height="30" viewBox="-30 -30 60 60" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="petalg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#8B6FB0"/>
+          <stop offset="100%" stop-color="#E1825A"/>
+        </linearGradient>
+      </defs>
+      <g>
+        <ellipse cx="0" cy="-13" rx="7" ry="13" fill="url(#petalg)" opacity="0.85" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-13" rx="7" ry="13" fill="url(#petalg)" opacity="0.85" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-13" rx="7" ry="13" fill="url(#petalg)" opacity="0.85" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-13" rx="7" ry="13" fill="url(#petalg)" opacity="0.85" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-13" rx="7" ry="13" fill="url(#petalg)" opacity="0.85" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-13" rx="7" ry="13" fill="url(#petalg)" opacity="0.85" transform="rotate(300)"/>
+        <circle cx="0" cy="0" r="5" fill="#FBF6EF" stroke="url(#petalg)" stroke-width="1.4"/>
+      </g>
+    </svg>
+    <span>June Sultan-Gerej</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#experience">Parcours</a></li>
+    <li><a href="cv.pdf" download="CV_June_Sultan-Gerej.pdf" class="nav-cv">Mon CV</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-motif">
+    <svg width="130" height="130" viewBox="-65 -65 130 130" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="petalgbig" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#8B6FB0" stop-opacity="0.55"/>
+          <stop offset="100%" stop-color="#E1825A" stop-opacity="0.45"/>
+        </linearGradient>
+      </defs>
+      <g>
+        <ellipse cx="0" cy="-28" rx="15" ry="28" fill="url(#petalgbig)" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-28" rx="15" ry="28" fill="url(#petalgbig)" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-28" rx="15" ry="28" fill="url(#petalgbig)" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-28" rx="15" ry="28" fill="url(#petalgbig)" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-28" rx="15" ry="28" fill="url(#petalgbig)" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-28" rx="15" ry="28" fill="url(#petalgbig)" transform="rotate(300)"/>
+        <circle cx="0" cy="0" r="10" fill="#FBF6EF" stroke="url(#petalgbig)" stroke-width="2"/>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="status-badge">
+      <div class="status-dot"></div>
+      Disponible immédiatement
+    </div>
+    <div class="hero-kicker">Assistante Administrative &amp; Support Opérationnel</div>
+    <h1>June Sultan-Gerej</h1>
+    <p class="hero-role"><span id="typed-role"></span><span class="cursor"></span></p>
+    <p class="hero-desc">
+      Professionnelle de l'administration avec un parcours confirmé en support management,
+      gestion des achats et support aux activités opérationnelles. Rigoureuse, organisée
+      et autonome, avec une réelle capacité d'analyse et d'adaptation.
+    </p>
+    <div class="hero-actions">
+      <a href="cv.pdf" download="CV_June_Sultan-Gerej.pdf" class="btn btn-primary">⬇ Télécharger mon CV</a>
+      <a href="mailto:sulgerjune@gmail.com" class="btn btn-ghost">✉ Email</a>
+    </div>
+    <div class="kpi-strip">
+      <div class="kpi-item">
+        <div class="kpi-num">3</div>
+        <div class="kpi-label">postes en gestion<br>administrative</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num">3 ans</div>
+        <div class="kpi-label">d'expérience terrain<br>en support opérationnel</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num">Mons</div>
+        <div class="kpi-label">Belgique · Permis B</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="reveal">
+    <div class="tab"><span class="tab-dot"></span>À propos</div>
+    <div class="section-panel">
+      <div class="about-layout">
+        <p class="about-text">
+          Après plusieurs années en gestion de bases de données, suivi de facturation et coordination
+          de prestataires dans l'immobilier commercial, je recherche aujourd'hui un poste d'assistante
+          administrative où je peux mettre à profit ma rigueur, mon sens de l'organisation et mon
+          autonomie. J'aime structurer l'information, fiabiliser les process et être le point de
+          contact qui fait avancer les choses.
+        </p>
+        <div class="info-stack">
+          <div class="info-card">
+            <div class="info-card-label">Domaines</div>
+            <div class="info-card-value">Gestion administrative · Achats · Support opérationnel</div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-label">Langues</div>
+            <div class="info-card-value">Français (langue maternelle) · Anglais A2</div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-label">Mobilité</div>
+            <div class="info-card-value">Permis B</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="reveal">
+    <div class="tab"><span class="tab-dot"></span>Compétences</div>
+    <div class="section-panel">
+      <div class="skills-grid">
+        <div class="skill-cat">
+          <h3>Gestion administrative</h3>
+          <div class="tags">
+            <span>Gestion de bases de données &amp; encodage</span>
+            <span>Suivi de la facturation</span>
+            <span>Suivi des contrats &amp; litiges</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <h3>Coordination &amp; support opérationnel</h3>
+          <div class="tags">
+            <span>Support technique</span>
+            <span>Reporting KPI</span>
+            <span>Suivi du chiffre d'affaires &amp; turnover</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <h3>Outils bureautique</h3>
+          <div class="tags">
+            <span>Pack Office</span>
+            <span>Windows 11</span>
+            <span>Logiciel de facturation interne</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <h3>Atouts complémentaires</h3>
+          <div class="tags">
+            <span>Montage PC</span>
+            <span>Notions IT (réseaux &amp; virtualisation)</span>
+            <span>Aisance avec l'outil informatique</span>
+          </div>
+        </div>
+      </div>
+      <div class="qualities-row">
+        <div class="quality-pill">Gestion des priorités</div>
+        <div class="quality-pill">Autonomie</div>
+        <div class="quality-pill">Capacité d'analyse</div>
+        <div class="quality-pill">Adaptabilité</div>
+        <div class="quality-pill">Autodidaxie</div>
+        <div class="quality-pill">Calme</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="reveal">
+    <div class="tab"><span class="tab-dot"></span>Parcours</div>
+    <div class="section-panel">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date">Mars 2020 → Avril 2021</div>
+          <div class="tl-role">Assistante de Direction</div>
+          <div class="tl-company">Galimmo</div>
+          <ul class="tl-list">
+            <li>Gestion des bases de données</li>
+            <li>Gestion de la comptabilité fournisseurs</li>
+            <li>Rédaction et suivi des contrats de specialty leasing</li>
+            <li>Reporting KPI</li>
+            <li>Coordination et suivi des prestataires et collaborateurs</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Novembre 2018 → Mars 2020</div>
+          <div class="tl-role">Shopping Center Management Business Support</div>
+          <div class="tl-company">CBRE PAM</div>
+          <ul class="tl-list">
+            <li>Gestion et optimisation du specialty leasing</li>
+            <li>Reporting KPI</li>
+            <li>Gestion des sinistres d'assurances</li>
+            <li>Coordination du support technique</li>
+            <li>Coordination et suivi des prestataires et collaborateurs</li>
+            <li>Rédaction et encodage administratif</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Mai 2018 → Octobre 2018</div>
+          <div class="tl-role">Assistante service achat</div>
+          <div class="tl-company">Les Entreprises Esmer</div>
+          <ul class="tl-list">
+            <li>Préparation et mise à jour des dossiers As-Built, suivi des livraisons sur chantier</li>
+            <li>Suivi et encodage de la facturation</li>
+            <li>Gestion des litiges</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATIONS -->
+<section id="formations">
+  <div class="reveal">
+    <div class="tab"><span class="tab-dot"></span>Formations</div>
+    <div class="section-panel">
+      <div class="formations-grid">
+        <div class="formation-card">
+          <div class="formation-date">Mars 2026</div>
+          <div class="formation-title">Administrateur système &amp; réseau orienté virtualisation</div>
+          <div class="formation-place">Technocité</div>
+        </div>
+        <div class="formation-card">
+          <div class="formation-date">2021 – 2024</div>
+          <div class="formation-title">Bachelier en Sciences psychologiques et de l'éducation</div>
+          <div class="formation-place">UMons</div>
+        </div>
+        <div class="formation-card">
+          <div class="formation-date">2017</div>
+          <div class="formation-title">CESS Sciences Sociales</div>
+          <div class="formation-place">Collège St François d'Assise</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERESTS -->
+<section id="interests">
+  <div class="reveal">
+    <div class="tab"><span class="tab-dot"></span>Centres d'intérêt</div>
+    <div class="section-panel">
+      <div class="interests-grid">
+        <div class="interest-card">
+          <h3>Échecs</h3>
+          <p>En apprentissage — j'aime la patience et la profondeur stratégique que le jeu demande.</p>
+        </div>
+        <div class="interest-card">
+          <h3>Jeux vidéo</h3>
+          <p>Elden Ring, World of Warcraft, Outer Wilds &amp; Hollow Knight.</p>
+        </div>
+        <div class="interest-card">
+          <h3>Musique</h3>
+          <p>Rone, Radiohead, Blonde Redhead.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <div class="tab"><span class="tab-dot"></span>Contact</div>
+    <div class="section-panel">
+      <div class="contact-grid">
+        <a href="mailto:sulgerjune@gmail.com" class="contact-item">
+          <div class="contact-icon">✉</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">sulgerjune@gmail.com</div>
+          </div>
+        </a>
+        <a href="tel:0477944623" class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Téléphone</div>
+            <div class="contact-value">0477/94.46.23</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-text">© 2026 June Sultan-Gerej</p>
+  <p class="footer-text">Mons, Belgique</p>
+</footer>
+
+<script>
+  const roles = [
+    "Assistante Administrative & Support Opérationnel",
+    "Gestion administrative · Achats · Coordination",
+    "Rigoureuse · Organisée · Autonome",
+  ];
+  let ri = 0, ci = 0, del = false;
+  const el = document.getElementById("typed-role");
+  function type() {
+    const cur = roles[ri];
+    if (!del) {
+      el.textContent = cur.slice(0, ++ci);
+      if (ci === cur.length) { del = true; setTimeout(type, 2200); return; }
+    } else {
+      el.textContent = cur.slice(0, --ci);
+      if (ci === 0) { del = false; ri = (ri + 1) % roles.length; }
+    }
+    setTimeout(type, del ? 30 : 50);
+  }
+  type();
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("visible"); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
